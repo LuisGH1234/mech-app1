@@ -1,0 +1,29 @@
+{
+    "name": "typegraphql-app1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "apollo-server": "^2.9.16",
+        "bcrypt": "3.0.6",
+        "graphql": "^14.5.8",
+        "mysql": "^2.17.1",
+        "reflect-metadata": "^0.1.13",
+        "type-graphql": "^0.17.6",
+        "typeorm": "^0.2.22"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^3.0.0",
+        "@types/graphql": "^14.5.0",
+        "nodemon": "^2.0.2",
+        "typescript": "^3.7.4"
+    },
+    "scripts": {
+        "ts-init": "tsc --init",
+        "start": "tsc && node dist/",
+        "start:dev": "nodemon"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
