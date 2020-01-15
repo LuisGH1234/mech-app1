@@ -3,11 +3,11 @@ import { Field, ObjectType } from "type-graphql";
 
 @ObjectType({ isAbstract: true })
 export class TimeDomain {
-    @Field()
+    @Field({ nullable: true })
     @CreateDateColumn()
     createdAt: string;
 
-    @Field()
+    @Field({ nullable: true })
     @UpdateDateColumn()
     updatedAt: string;
 }
