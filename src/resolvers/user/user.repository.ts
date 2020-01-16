@@ -2,7 +2,7 @@ import { Repository, Brackets, EntityRepository, getCustomRepository } from "typ
 import { User } from "../../entity";
 import { Service } from "typedi";
 
-@Service({ id: "user.repository", factory: () => getCustomRepository(UserRepository) })
+// @Service({ id: "user.repository", factory: () => getCustomRepository(UserRepository) })
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
     async findUsers(limit: number, page: number, filter: string) {

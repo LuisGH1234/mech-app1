@@ -10,7 +10,8 @@ async function bootstrap() {
     await openConnection();
     const schema = await buildSchema({
         resolvers: [__dirname + "/resolvers/**/*.resolver.{ts,js}"],
-        container: Container
+        container: Container,
+        validate: false
     });
 
     const server = new ApolloServer({
