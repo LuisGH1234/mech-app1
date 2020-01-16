@@ -3,8 +3,8 @@ import { Service, Inject } from "typedi";
 import { JWT, InjectRepository } from "../../lib";
 import { UserInput, AuthResult, ListArgs } from "../../@types";
 
-@Service("user.service")
-export class UserSevice {
+@Service()
+export class UserService {
     // constructor(@Inject("user.repository") private readonly userRepository: UserRepository) {}
     constructor(
         @InjectRepository(UserRepository) private readonly userRepository: UserRepository

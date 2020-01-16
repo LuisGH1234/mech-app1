@@ -4,7 +4,7 @@ import { Container } from "typedi";
 import { openConnection } from "./database";
 import { buildSchema } from "type-graphql";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 async function bootstrap() {
     await openConnection();
