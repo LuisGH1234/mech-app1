@@ -24,7 +24,8 @@
     "scripts": {
         "ts-init": "tsc --init",
         "start": "tsc && node dist/",
-        "start:dev": "nodemon"
+        "start:dev": "nodemon",
+        "db:seed": "tsc && node dist/database/seed/index.js"
     },
     "keywords": [],
     "author": "",

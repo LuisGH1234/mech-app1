@@ -1,7 +1,6 @@
-import { Resolver, Query, Arg, Mutation, Args, ID } from "type-graphql";
+import { Resolver, Query, Arg, Mutation, Args, ID, FieldResolver, Root } from "type-graphql";
 import { User } from "../../entity";
 import { UserService } from "./user.service";
-import { Inject } from "typedi";
 import { AuthResult, UserInput, ListArgs, UserPaginationResult } from "../../@types";
 import { InjectService } from "../../lib";
 
@@ -24,5 +23,15 @@ export class UserResolver {
     @Mutation(returns => AuthResult)
     register(@Arg("user") user: UserInput) {
         return this.userService.register(user);
+    }
+
+    @FieldResolver()
+    role(@Root() user: User) {
+        return this.userService.getRoleByUser(user.id!);
+    }
+
+    @FieldResolver()
+    mechs(@Root() user: User) {
+        return this.userService.getMechsByUser(user.id!);
     }
 }

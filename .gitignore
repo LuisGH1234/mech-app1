@@ -88,3 +88,7 @@ typings/
 app.yaml
 .env
 .DS_Store
+
+# SDL schema
+.gql
+.graphql

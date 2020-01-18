@@ -11,7 +11,8 @@ async function bootstrap() {
     const schema = await buildSchema({
         resolvers: [__dirname + "/resolvers/**/*.resolver.{ts,js}"],
         container: Container,
-        validate: false
+        validate: false,
+        emitSchemaFile: true
     });
 
     const server = new ApolloServer({

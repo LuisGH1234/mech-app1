@@ -6,5 +6,5 @@ import { Field, ID, ObjectType } from "type-graphql";
 export class BaseDomain extends TimeDomain {
     @Field(type => ID)
     @PrimaryGeneratedColumn("uuid")
-    id: string;
+    id?: string;
 }

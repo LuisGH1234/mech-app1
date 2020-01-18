@@ -1,7 +1,7 @@
 import { UserRepository } from "./user.repository";
-import { Service, Inject } from "typedi";
+import { Service } from "typedi";
 import { JWT, InjectRepository } from "../../lib";
-import { UserInput, AuthResult, ListArgs } from "../../@types";
+import { UserInput, AuthResult, ListArgs, UserPaginationResult } from "../../@types";
 
 @Service()
 export class UserService {
@@ -12,19 +12,20 @@ export class UserService {
 
     getUser(id: string) {
         return this.userRepository.findOne(id);
-        // return {
-        //     firstname: "luis",
-        //     lastname: "galindo",
-        //     age: 21,
-        //     email: "lagh3.30@gmail.com",
-        //     id: "asasdas"
-        // };
+    }
+
+    getRoleByUser(userID: string) {
+        return this.userRepository.findRoleByUser(userID);
+    }
+
+    getMechsByUser(userID: string) {
+        return this.userRepository.findMechsByUser(userID);
     }
 
     async getUsers(args: ListArgs) {
         const { page = 1, limit = 10, filter = "" } = args;
         const users = await this.userRepository.findUsers(limit, page, filter);
-        return { users: users[0], count: users[1] };
+        return { list: users[0], count: users[1] } as UserPaginationResult;
     }
 
     async register(data: UserInput) {

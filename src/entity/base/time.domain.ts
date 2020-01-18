@@ -5,9 +5,9 @@ import { Field, ObjectType } from "type-graphql";
 export class TimeDomain {
     @Field({ nullable: true })
     @CreateDateColumn()
-    createdAt: string;
+    createdAt?: string;
 
     @Field({ nullable: true })
     @UpdateDateColumn()
-    updatedAt: string;
+    updatedAt?: string;
 }
