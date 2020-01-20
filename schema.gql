@@ -3,8 +3,36 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input AddMechInput {
+  voltageStart: Float!
+  voltageEnd: Float!
+  power: Float!
+  weightCapacity: Float!
+  deliveryTimeStart: Int!
+  deliveryTimeEnd: Int!
+  orangeSizeStart: Float!
+  orangeSizeEnd: Float!
+  long: Float!
+  width: Float!
+  height: Float!
+  temperatureStart: Int!
+  temperatureEnd: Int!
+  userID: ID
+  paymentMethodsID: [ID!]!
+}
+
+type AddMechPayload {
+  mech: Mech!
+}
+
 type AuthResult {
   token: String!
+}
+
+"""Basic languages"""
+enum Language {
+  SPANISH
+  ENGLISH
 }
 
 type Mech {
@@ -25,7 +53,7 @@ type Mech {
   temperatureStart: Int
   temperatureEnd: Int
   user: User
-  paymentMethods: [PaymentMethod!]
+  paymentMethods(language: Language): [PaymentMethod!]
 }
 
 type MechPaginationResult {
@@ -34,7 +62,9 @@ type MechPaginationResult {
 }
 
 type Mutation {
-  register(user: UserInput!): AuthResult!
+  addMech(mech: AddMechInput!): AddMechPayload!
+  updateMech(mech: UpdateMechInput!): UpdateMechPayload!
+  registerUser(user: UserInput!): AuthResult!
 }
 
 type PaymentMethod {
@@ -42,8 +72,9 @@ type PaymentMethod {
   updatedAt: String
   id: ID!
   code: String!
-  mechs: [Mech!]
+  mechs(page: Int, limit: Int, filter: String): MechPaginationResult
   translations: [PaymentMethodTranslation!]!
+  translation(language: Language!): PaymentMethodTranslation!
 }
 
 type PaymentMethodTranslation {
@@ -59,6 +90,8 @@ type PaymentMethodTranslation {
 type Query {
   mech(id: ID!): Mech
   mechs(page: Int, limit: Int, filter: String): MechPaginationResult!
+  paymentMethod(id: ID!): PaymentMethod!
+  paymentMethods(filter: String, language: Language): [PaymentMethod!]!
   roles(filter: String): [Role!]!
   user(id: ID!): User
   users(page: Int, limit: Int, filter: String): UserPaginationResult!
@@ -71,6 +104,28 @@ type Role {
   code: String!
   description: String!
   users: [User!]
+}
+
+input UpdateMechInput {
+  id: ID!
+  voltageStart: Float
+  voltageEnd: Float
+  power: Float
+  weightCapacity: Float
+  deliveryTimeStart: Int
+  deliveryTimeEnd: Int
+  orangeSizeStart: Float
+  orangeSizeEnd: Float
+  long: Float
+  width: Float
+  height: Float
+  temperatureStart: Int
+  temperatureEnd: Int
+  userID: ID
+}
+
+type UpdateMechPayload {
+  mech: Mech!
 }
 
 type User {

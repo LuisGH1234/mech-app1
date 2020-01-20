@@ -1,5 +1,6 @@
-import { User, Mech } from "../../entity";
 import { ObjectType, Field, Int } from "type-graphql";
+import { User } from "../../entity/user.entity";
+import { Mech } from "../../entity/mech.entity";
 
 @ObjectType()
 export class UserPaginationResult {

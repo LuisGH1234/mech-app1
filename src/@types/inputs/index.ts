@@ -1,1 +1,2 @@
-export * from "./user.types";
+export * from "./user.input";
+export * from "./mech.input";

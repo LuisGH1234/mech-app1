@@ -1,16 +1,17 @@
 import { PaymentMethod } from "../../entity";
+import { Language } from "../../@types";
 
 export const paymentMethods: PaymentMethod[] = [
     {
         code: "PMM1",
         translations: [
             {
-                language: "spanish",
+                language: Language.SPANISH,
                 isDefault: true,
                 description: "efectivo"
             },
             {
-                language: "english",
+                language: Language.ENGLISH,
                 isDefault: false,
                 description: "cash"
             }
@@ -20,12 +21,12 @@ export const paymentMethods: PaymentMethod[] = [
         code: "PMM2",
         translations: [
             {
-                language: "spanish",
+                language: Language.SPANISH,
                 isDefault: true,
                 description: "tarjeta"
             },
             {
-                language: "english",
+                language: Language.ENGLISH,
                 isDefault: false,
                 description: "card"
             }

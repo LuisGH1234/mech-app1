@@ -21,7 +21,7 @@ export class UserResolver {
     }
 
     @Mutation(returns => AuthResult)
-    register(@Arg("user") user: UserInput) {
+    registerUser(@Arg("user") user: UserInput) {
         return this.userService.register(user);
     }
 

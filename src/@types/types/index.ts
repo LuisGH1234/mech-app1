@@ -1,2 +1,3 @@
-export * from "./auth.types";
-export * from "./pagination.types";
+export * from "./auth.type";
+export * from "./pagination.type";
+export * from "./payload.type";

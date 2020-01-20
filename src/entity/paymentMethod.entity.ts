@@ -1,9 +1,9 @@
 import { BaseDomain } from "./base/base.domain";
 import { Entity, Column, OneToMany } from "typeorm";
 import { Field, ObjectType } from "type-graphql";
-import { Mech } from "./mech.entity";
 import { PaymentMethodMech } from "./paymentMethodMech.entity";
 import { PaymentMethodTranslation } from "./paymentMethodTranslation.entity";
+import { MechPaginationResult } from "../@types";
 
 @ObjectType()
 @Entity()
@@ -18,8 +18,8 @@ export class PaymentMethod extends BaseDomain {
     )
     paymentMethodMechs?: PaymentMethodMech[];
 
-    @Field(type => [Mech], { nullable: true })
-    mechs?: Mech[];
+    @Field(type => MechPaginationResult, { nullable: true })
+    mechs?: MechPaginationResult;
 
     @Field(type => [PaymentMethodTranslation])
     @OneToMany(
@@ -28,4 +28,7 @@ export class PaymentMethod extends BaseDomain {
         { cascade: ["insert", "remove"] }
     )
     translations: PaymentMethodTranslation[];
+
+    @Field(type => PaymentMethodTranslation)
+    translation?: PaymentMethodTranslation;
 }

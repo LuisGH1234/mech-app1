@@ -85,14 +85,16 @@ export class Mech extends BaseDomain {
 
     @OneToMany(
         type => PaymentMethodMech,
-        pmm => pmm.mech
+        pmm => pmm.mech,
+        { cascade: ["insert"] }
     )
     paymentMethodMechs: PaymentMethodMech[];
 
     @Field(type => User, { nullable: true })
     @ManyToOne(
         type => User,
-        user => user.mechs
+        user => user.mechs,
+        { nullable: true }
     )
     user: User;
 
